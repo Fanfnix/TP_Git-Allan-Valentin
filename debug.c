@@ -15,6 +15,13 @@ void sortInsert(struct Cell **head, struct Cell *cell){
     sortInsert(&((*head)->next),cell);
 }
 
+struct Cell *newCell(int value){
+    struct Cell *p=malloc(sizeof(p)); 
+    if (p==NULL) exit(2);             
+    p->value=value;
+    return p;
+}
+
 void power2(struct Cell *list){
     if (list==NULL) return ;
     list->value = list->value * list->value;
@@ -31,6 +38,6 @@ void printList(struct Cell *list){
     if(list==NULL) printf("\n");
     else {
         printf("%d ",list->value);
-        printList(list); 
+        printList(list->next); 
     }
 }
