@@ -1,6 +1,8 @@
-#ifndef malloc_h
-#define malloc_h
-
+#ifndef DEBUG
+#define DEBUG
+#include <stdio.h>
+#include <stdlib.h>
+#include <malloc.h>
 struct Cell {
     int value;
     struct Cell *next;

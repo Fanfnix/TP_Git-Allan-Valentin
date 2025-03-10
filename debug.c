@@ -1,16 +1,17 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "debug.h"
-#include <malloc.h>
+
 
 struct Cell *newCell(int value){
-    struct Cell *p=malloc(sizeof(struct Cell)); 
+    struct Cell *p = malloc(sizeof(struct Cell)); 
     if (p==NULL) exit(2);             
     p->value=value;
+    p->next=NULL;
     return p;
 }
 
 void sortInsert(struct Cell **head, struct Cell *cell){
+    // printf(" val = %d", cell->value);
+
     if (*head==NULL){
         *head=cell;
         return;
@@ -37,7 +38,10 @@ void freeList(struct Cell *list){
 }
 
 void printList(struct Cell *list){
-    if(list==NULL) printf("\n");
+    if (list==NULL) {
+        printf("\n");
+        return;
+    }
     else {
         printf("%d ",list->value);
         printList(list->next); 
