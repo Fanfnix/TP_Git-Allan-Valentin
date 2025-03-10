@@ -1,8 +1,8 @@
 #ifndef DEBUG
 #define DEBUG
 
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include <malloc.h>
 
 struct Cell {
@@ -16,4 +16,4 @@ void power2(struct Cell *list);
 void freeList(struct Cell *list);
 void printList(struct Cell *list);
 
-#ifndef
+#endif
