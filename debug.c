@@ -1,6 +1,14 @@
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include "debug.h"
+#include <malloc.h>
+
+struct Cell *newCell(int value){
+    struct Cell *p=malloc(sizeof(struct Cell)); 
+    if (p==NULL) exit(2);             
+    p->value=value;
+    return p;
+}
 
 void sortInsert(struct Cell **head, struct Cell *cell){
     if (*head==NULL){
@@ -15,13 +23,6 @@ void sortInsert(struct Cell **head, struct Cell *cell){
     sortInsert(&((*head)->next),cell);
 }
 
-struct Cell *newCell(int value){
-    struct Cell *p=malloc(sizeof(p)); 
-    if (p==NULL) exit(2);             
-    p->value=value;
-    return p;
-}
-
 void power2(struct Cell *list){
     if (list==NULL) return ;
     list->value = list->value * list->value;
@@ -30,8 +31,9 @@ void power2(struct Cell *list){
 
 void freeList(struct Cell *list){
     if(list==NULL) return;
+    struct Cell *next = list->next;
     free(list);
-    freeList(list->next);
+    freeList(next);
 }
 
 void printList(struct Cell *list){
